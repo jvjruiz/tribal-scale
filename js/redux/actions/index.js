@@ -32,3 +32,18 @@ export const fetchRandomPeopleError = function(error) {
         payload: error
     }
 }
+
+export const SORT_BY_FIRST_NAME = 'SORT_BY_FIRST_NAME';
+export const sortByFirstName = function() {
+    return {
+        type: SORT_BY_FIRST_NAME,
+    }
+}
+
+export const SORT_BY_LAST_NAME = 'SORT_BY_LAST_NAME';
+export const sortByLastName = function(randoms) {
+    return {
+        type: SORT_BY_LAST_NAME,
+        payload:randoms
+    }
+}
