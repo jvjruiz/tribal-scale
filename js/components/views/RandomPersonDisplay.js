@@ -1,10 +1,16 @@
 import React from 'react';
 
 import RandomPersonList from '../common/RandomPersonList';
+import RadioButton from '../common/RadioButton';
+import SearchBar from '../common/SearchBar';
 
 const Display = () => {
     return (
-        <RandomPersonList />
+        <div>
+            <SearchBar />
+            <RadioButton />
+            <RandomPersonList />
+        </div>
     );
 };
 

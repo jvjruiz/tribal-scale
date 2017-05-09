@@ -14,6 +14,9 @@ export const fetchRandomPeopleAsync = function() {
         .then(function(randomPeople) {
             return dispatch(fetchRandomPeopleSuccess(randomPeople.results))
         })
+        .then(function() {
+            return dispatch(sortBy('lastName'));
+        })
     }
 }
 
@@ -33,17 +36,18 @@ export const fetchRandomPeopleError = function(error) {
     }
 }
 
-export const SORT_BY_FIRST_NAME = 'SORT_BY_FIRST_NAME';
-export const sortByFirstName = function() {
+export const SORT_BY = 'SORT_BY';
+export const sortBy = function(filterValue) {
     return {
-        type: SORT_BY_FIRST_NAME,
-    }
+        type: SORT_BY,
+        payload: filterValue
+     }
 }
 
-export const SORT_BY_LAST_NAME = 'SORT_BY_LAST_NAME';
-export const sortByLastName = function(randoms) {
+export const UPDATE_SEARCH_STRING = 'UPDATE_SEARCH_STRING';
+export const updateSearchString = function(string) {
     return {
-        type: SORT_BY_LAST_NAME,
-        payload:randoms
+        type: UPDATE_SEARCH_STRING,
+        payload: string
     }
 }

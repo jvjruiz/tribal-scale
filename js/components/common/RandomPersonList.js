@@ -5,22 +5,24 @@ import * as actions from '../../redux/actions/index';
 
 import RandomPerson from './RandomPerson'
 
+var ReactRenderVisualizer = require("react-render-visualizer")
+
 class RandomPersonList extends Component {
     componentDidMount() {
+        console.log('didmount')
         this.props.fetchPeople();
     }
 
-    sortByFirstName() {
-        this.props.sortByFirstName();
-    }
-
-    sortByLastName() {
-        this.props.sortByLastName(this.props.currentRandoms);
-    }
-
     renderPeople() {
+        console.log('rendering people')
         let people = this.props.currentRandoms;
-        return people.map((person, index) => {
+        let searchString = this.props.currentSearchString; 
+        if(searchString !== '') {
+             people = people.filter(function(person) {
+                return person.name.first.indexOf(searchString) >= 0 || person.name.last.indexOf(searchString) >= 0
+            });   
+        }
+        return people.map((person, index, array) => {
             return (
                 <RandomPerson
                     key = {index} 
@@ -34,8 +36,6 @@ class RandomPersonList extends Component {
     render() {
         return (
             <div>
-                <button onClick = {this.sortByFirstName.bind(this)}>first name</button>
-                <button onClick = {this.sortByLastName.bind(this)}>last name</button>
                 <div className = "people-container">
                     <ul>
                         {this.renderPeople()}
@@ -49,6 +49,8 @@ class RandomPersonList extends Component {
 const mapStateToPops = (state) => {
     return {
         currentRandoms: state.currentRandoms,
+        currentSearchString: state.currentSearchString,
+        currentSortQuery: state.currentSortQuery
     }
 }
 
@@ -57,13 +59,6 @@ const mapDispatchToProps = (dispatch) => {
         fetchPeople: function() {
             dispatch(actions.fetchRandomPeopleAsync());
         },
-        sortByFirstName: function() {
-            dispatch(actions.sortByFirstName());
-        },
-        sortByLastName: function(currentRandoms) {
-            dispatch(actions.sortByLastName(currentRandoms));
-        }
-
     }
 }
 
