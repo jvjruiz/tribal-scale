@@ -1,5 +1,4 @@
 import * as actions from '../actions/index';
-console.log(actions)
 const initialState = {
 	isLoading: false,
 	currentRandoms: [],
@@ -12,11 +11,6 @@ const initialState = {
 
 export default function reducer(state = initialState, action) {
     let newState;
-
-    console.log(state)
-
-
-    console.log(action.type)
     switch(action.type) {
         
         case 'FETCH_RANDOM_PEOPLE_SUCCESS':
@@ -25,12 +19,10 @@ export default function reducer(state = initialState, action) {
 
         case 'TOGGLE_MODAL':
             let updatedModalState = !state.modalOpen;
-            console.log(updatedModalState)
             return { ...state, modalOpen:updatedModalState }
         
         case 'MODAL_PERSON':
             let modalPerson = action.payload;
-            console.log(action.payload)
             return { ...state, modalPerson:modalPerson }
 
         case 'SORT_BY':
@@ -60,7 +52,6 @@ export default function reducer(state = initialState, action) {
                     return 0;
                 });
             }
-            console.log(people)
             return {...state, currentRandoms:people, currentSortQuery: action.payload}
         
         case 'UPDATE_SEARCH_STRING':
