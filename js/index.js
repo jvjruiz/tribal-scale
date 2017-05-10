@@ -1,7 +1,6 @@
 require('babel-polyfill');
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route, Link, Switch, HashHistory } from 'react-router';
 import {Provider} from 'react-redux';
 
 import RandomPersonDisplay from './components/views/RandomPersonDisplay';

@@ -7,6 +7,13 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'build/js'),
         filename: 'index.js',
+        publicPath: 'http://localhost:7700/dist',
+    },
+    devServer: {
+      hot:true,
+      inline:true,
+      port:7700,
+      historyApiFallback:true,
     },
     devtool: 'inline-source-map',
     module: {
@@ -17,5 +24,10 @@ module.exports = {
           loader: 'babel',
         },
       ]
-    }
+    },
+    externals: {
+    'cheerio': 'window',
+    'react/lib/ExecutionEnvironment': true,
+    'react/lib/ReactContext': true,
+  },
 };

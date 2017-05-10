@@ -18,24 +18,26 @@ class RandomPerson extends Component {
     }
 
     openModal() {
+        let person = this.props.person
         if(!this.props.modalOpen){
-            this.props.openModal(this.props.person);
+            this.props.openModal(person);
         }
         else {
-            this.props.changeModal(this.props.person)
+            this.props.changeModal(person)
         }
     }
 
     render() {
+        let person = this.props.person
         return (
                 <li className='person' onClick={() => this.openModal()}>
                     <div className = 'person-photo-container'>
-                        <img src={this.props.person.picture.large} className = 'person-photo' />
+                        <img src={person.picture.large} className = 'person-photo' />
                     </div>
                     <div className = 'person-info'>
-                        <p className = 'name'> {this.formatString(this.props.person.name.first)} {this.formatString(this.props.person.name.last)} </p>
-                        <p className = 'date-of-birth'>DOB: {this.props.person.dob.split(' ')[0]}</p>
-                        <p className = 'location'> {this.formatCity(this.props.person.location.city)}</p>
+                        <p className = 'name'> {this.formatString(person.name.first)} {this.formatString(person.name.last)} </p>
+                        <p className = 'date-of-birth'>DOB: {person.dob.split(' ')[0]}</p>
+                        <p className = 'location'> {this.formatCity(person.location.city)}</p>
                     </div>
                 </li>
         )

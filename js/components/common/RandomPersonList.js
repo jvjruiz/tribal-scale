@@ -22,19 +22,7 @@ class RandomPersonList extends Component {
         return people.map((person,index,array) => {
             let currentHeader = person.name[sortFilter].charAt(0);
             let currentLetter = array[index].name[sortFilter].charAt(0);
-            if(index === 0) {
-                return (
-                    <div key={index} className='letter-container'>
-                        <h1>{currentHeader.toUpperCase()}</h1>
-                        <hr />
-                        <ul className='people-container'>
-                            {this.renderPeople(currentHeader,people)}
-                        </ul>
-                    </div>
-                )
-            }
-            else if(array[index].name[sortFilter].charAt(0) !== array[index-1].name[sortFilter].charAt(0)) {
-                currentHeader = currentLetter
+            if(index === 0 || (array[index].name[sortFilter].charAt(0) !== array[index-1].name[sortFilter].charAt(0))) {
                 return (
                     <div key={index} className='letter-container'>
                         <h1>{currentHeader.toUpperCase()}</h1>
@@ -49,7 +37,6 @@ class RandomPersonList extends Component {
     }
 
     renderPeople(currentHeader,people) {
-        console.log('rendering people')
         let sortFilter = this.props.currentSortQuery;
 
         return people.map((person, index, array) => {
