@@ -1,20 +1,77 @@
-#app {
-    width:100vw;
-    height:100vh;
+html, body {
+    height:100%;
+    padding:0;
+    margin:0;
+    box-sizing:border-box;
 }
 
-/* Modal Styling */
-.modal {
-    display:flex;
-    position: absolute;
-    z-index: 999;
-    top:50%;
-    left:50%;
-    width:40%
+/* Random-List Styling */
+.list-container {
+    display:block;
 }
-
-/* RandomPersonDisplay styling */
+li span {
+    content:"\A";
+    white-space:pre;
+}
 
 .people-container {
     display:flex;
+}
+
+.person{
+    width:10em;
+    padding-right:10%;
+    list-style:none;
+    padding:0;
+}
+
+.letter-break {
+    width:100%;
+}
+
+/* Filter-Options Styling */
+.filter-options {
+    display:flex;
+    width:30%;
+    padding-left:3%;
+    margin-top:1em;
+}
+
+.search-bar {
+    margin-top:1em;
+    height:1.5em;
+}
+
+.radio-buttons {
+    padding-left:30%;
+}
+
+/* Modal Styling */
+.modal-background {
+    width:100%;  
+    height: 100%;
+    background-color:rgba(0,0,0,.3);
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:100;
+}
+
+.modal {
+    padding: 1em;
+    background-color:white;
+    border:1px solid black;
+    position:fixed;
+    left:50%;
+    top:50%;
+    display:flex;
+    transform: translate(-50%,-50%);
+}
+
+.modal-picture-container {
+    padding-right:1em;
+}
+
+.modal-picture {
+    padding-top:1.7em;
 }

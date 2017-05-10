@@ -5,55 +5,71 @@ import * as actions from '../../redux/actions/index';
 
 import RandomPerson from './RandomPerson'
 
-var ReactRenderVisualizer = require("react-render-visualizer")
-
 class RandomPersonList extends Component {
     componentDidMount() {
         this.props.fetchPeople();
     }
 
-    renderPeople() {
-        console.log('rendering people')
+    renderHeaders() {
         let people = this.props.currentRandoms;
-        let searchString = this.props.currentSearchString;
         let sortFilter = this.props.currentSortQuery;
-        let firstOfLetter; 
+        let searchString = this.props.currentSearchString;
         if(searchString !== '') {
              people = people.filter(function(person) {
                 return person.name.first.indexOf(searchString) >= 0 || person.name.last.indexOf(searchString) >= 0
             });   
         }
-        return people.map((person, index, array) => {
-            console.log(sortFilter)
-            console.log(index)
+        return people.map((person,index,array) => {
+            let currentHeader = person.name[sortFilter].charAt(0);
+            let currentLetter = array[index].name[sortFilter].charAt(0);
             if(index === 0) {
-                firstOfLetter = true;
-            } 
+                return (
+                    <div key={index} className='letter-container'>
+                        <h1>{currentHeader.toUpperCase()}</h1>
+                        <hr />
+                        <ul className='people-container'>
+                            {this.renderPeople(currentHeader,people)}
+                        </ul>
+                    </div>
+                )
+            }
             else if(array[index].name[sortFilter].charAt(0) !== array[index-1].name[sortFilter].charAt(0)) {
-                firstOfLetter = true;
+                currentHeader = currentLetter
+                return (
+                    <div key={index} className='letter-container'>
+                        <h1>{currentHeader.toUpperCase()}</h1>
+                        <hr />
+                        <ul className='people-container'>
+                            {this.renderPeople(currentHeader,people)}
+                        </ul>
+                    </div>
+                )
             }
-            else {
-                firstOfLetter = false;
+        })
+    }
+
+    renderPeople(currentHeader,people) {
+        console.log('rendering people')
+        let sortFilter = this.props.currentSortQuery;
+
+        return people.map((person, index, array) => {
+            if(currentHeader === person.name[sortFilter].charAt(0)) {
+                return (
+                    <RandomPerson
+                        person={person}
+                        key={index*2}
+                     />
+                )
             }
-            return (
-                <RandomPerson
-                    key = {index} 
-                    person = {person}
-                    className = 'random-person'
-                    firstOfLetter = {firstOfLetter}
-                />
-            )
         })
     }
 
     render() {
         return (
             <div>
-                <div className = "people-container">
-                    <ul className = "people-container">
-                        {this.renderPeople()}
-                    </ul>
-                </div>
+                <ul className='list-container'>
+                    {this.renderHeaders()}
+                </ul>
             </div>
         )
     }

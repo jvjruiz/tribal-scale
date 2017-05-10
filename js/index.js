@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Route, Link, Switch, HashHistory } from 'react
 import {Provider} from 'react-redux';
 
 import RandomPersonDisplay from './components/views/RandomPersonDisplay';
-import Modal from './components/views/Modal';
 import store from './redux/store';
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -13,7 +12,6 @@ document.addEventListener('DOMContentLoaded', function() {
     <Provider store={store}>
 		<div>
 			<RandomPersonDisplay />
-			<Modal />
 		</div>
 	</Provider>,
 	document.getElementById('app')

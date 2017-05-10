@@ -22,9 +22,9 @@ class RadioButton extends Component {
 
     render() {
         return (
-            <div>
-            <div>
+            <div className='radio-buttons'>
                 <div>
+                    Sort By
                     <form type='submit'>
                         <div className='radio'>
                             <label>
@@ -32,7 +32,7 @@ class RadioButton extends Component {
                                 value='first' 
                                 checked={this.state.selectedOption === 'first'}
                                 onChange = {this.handleOptionChange.bind(this)}/>
-                                Sort By First Name
+                                First Name
                             </label>
                         </div>
                         <div className='radio'>
@@ -41,13 +41,12 @@ class RadioButton extends Component {
                                 value='last' 
                                 checked={this.state.selectedOption === 'last'}
                                 onChange = {this.handleOptionChange.bind(this)}/>
-                                Sort By Last Name
+                                Last Name
                             </label>
                         </div>
                     </form>
                 </div>
             </div>
-        </div>
         )
     }
 }

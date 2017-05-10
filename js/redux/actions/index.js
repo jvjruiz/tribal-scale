@@ -3,7 +3,7 @@ import fetch from 'isomorphic-fetch';
 export const FETCH_RANDOM_PEOPLE_ASYNC = 'FETCH_RANDOM_PEOPLE_ASYNC';
 export const fetchRandomPeopleAsync = function() {
     return dispatch => {
-        return fetch('https://randomuser.me/api/?results=10&seed=tribalScale')
+        return fetch('https://randomuser.me/api/?results=50&seed=tribalScale')
         .then(function(response, error) {
             if(error) {
                 dispatch(fetchRandomPeopleError(error))
