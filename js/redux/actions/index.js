@@ -15,7 +15,7 @@ export const fetchRandomPeopleAsync = function() {
             return dispatch(fetchRandomPeopleSuccess(randomPeople.results))
         })
         .then(function() {
-            return dispatch(sortBy('lastName'));
+            return dispatch(sortBy('last'));
         })
     }
 }
@@ -33,6 +33,21 @@ export const fetchRandomPeopleError = function(error) {
     return {
         type: FETCH_RANDOM_PEOPLE_ERROR,
         payload: error
+    }
+}
+
+export const TOGGLE_MODAL = 'TOGGLE_MODAL';
+export const toggleModal = function() {
+    return {
+        type: TOGGLE_MODAL
+    }
+}
+
+export const MODAL_PERSON = 'MODAL_PERSON';
+export const modalPerson = function(person) {
+    return {
+        type: MODAL_PERSON,
+        payload: person
     }
 }
 

@@ -7,7 +7,7 @@ class RadioButton extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            selectedOption: 'lastName'
+            selectedOption: 'last'
         }
     }
 
@@ -29,8 +29,8 @@ class RadioButton extends Component {
                         <div className='radio'>
                             <label>
                                 <input type='radio' 
-                                value='firstName' 
-                                checked={this.state.selectedOption === 'firstName'}
+                                value='first' 
+                                checked={this.state.selectedOption === 'first'}
                                 onChange = {this.handleOptionChange.bind(this)}/>
                                 Sort By First Name
                             </label>
@@ -38,8 +38,8 @@ class RadioButton extends Component {
                         <div className='radio'>
                             <label>
                                 <input type='radio' 
-                                value='lastName' 
-                                checked={this.state.selectedOption === 'lastName'}
+                                value='last' 
+                                checked={this.state.selectedOption === 'last'}
                                 onChange = {this.handleOptionChange.bind(this)}/>
                                 Sort By Last Name
                             </label>

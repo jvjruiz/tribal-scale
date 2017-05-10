@@ -1,0 +1,20 @@
+#app {
+    width:100vw;
+    height:100vh;
+}
+
+/* Modal Styling */
+.modal {
+    display:flex;
+    position: absolute;
+    z-index: 999;
+    top:50%;
+    left:50%;
+    width:40%
+}
+
+/* RandomPersonDisplay styling */
+
+.people-container {
+    display:flex;
+}
