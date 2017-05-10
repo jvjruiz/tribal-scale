@@ -1,9 +1,9 @@
 import fetch from 'isomorphic-fetch';
 
 export const FETCH_RANDOM_PEOPLE_ASYNC = 'FETCH_RANDOM_PEOPLE_ASYNC';
-export const fetchRandomPeopleAsync = function() {
+export const fetchRandomPeopleAsync = function(seed) {
     return dispatch => {
-        return fetch('https://randomuser.me/api/?results=50&seed=tribalScale')
+        return fetch('https://randomuser.me/api/?results=50&seed=' + seed)
         .then(function(response, error) {
             if(error) {
                 dispatch(fetchRandomPeopleError(error))

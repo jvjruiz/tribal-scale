@@ -32,7 +32,7 @@ li span {
 /* Filter-Options Styling */
 .filter-options {
     display:flex;
-    width:30%;
+    width:50%;
     padding-left:3%;
     margin-top:1em;
 }
@@ -42,8 +42,9 @@ li span {
     height:1.5em;
 }
 
-.radio-buttons {
-    padding-left:30%;
+.radio-buttons, .seed-bar {
+    padding-left:3%;
+    margin-top:.5em;
 }
 
 /* Modal Styling */
