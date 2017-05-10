@@ -25,7 +25,7 @@ My overall approach was broken down into steps:
 ### Features Complete
 I finished all of the basic features and some basic tests for the components, actions and reducer
 
-###If I had more time...
+### If I had more time...
 * I would have liked to work on the automation UI testing and deploying to a cloud infrastracture, along with more robust tests for the components
 * If I were to add more robust features, I would include a way for the use to choose how many results they would get back from a search query, the ability to generate random lists based on different 'seed' parameters, and the ability to export the data into a .json file to be used with other projects if the user liked the particular list.
 
